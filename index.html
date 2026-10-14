@@ -3,444 +3,306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nguyễn Tú - Xác Thực</title>
+<title>nguyễn tú 🖤</title>
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
   body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
     min-height: 100vh;
-    background: linear-gradient(135deg, #fff0f6 0%, #ffffff 50%, #ffe0ec 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
+    padding: 16px;
   }
 
-  body::before,
-  body::after {
+  .container {
+    max-width: 480px;
+    width: 100%;
+    background: #ffffff;
+    border: 3px solid #ff4d8d;
+    border-radius: 28px;
+    padding: 30px 22px;
+    box-shadow: 0 10px 40px rgba(255, 77, 141, 0.15), 0 2px 10px rgba(255, 77, 141, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container::before {
     content: '';
-    position: fixed;
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(255,77,141,0.1) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    z-index: 0;
     pointer-events: none;
   }
 
-  body::before {
-    width: 400px;
-    height: 400px;
-    background: #ff8fbf;
-    top: -150px;
-    left: -150px;
-  }
-
-  body::after {
-    width: 400px;
-    height: 400px;
-    background: #ffc0da;
-    bottom: -150px;
-    right: -150px;
-  }
-
-  .card {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 420px;
-    background: #ffffff;
-    border: 2.5px solid #ff69b4;
-    border-radius: 24px;
-    padding: 40px 32px;
-    box-shadow: 
-      0 0 0 6px rgba(255, 105, 180, 0.08),
-      0 20px 50px rgba(255, 105, 180, 0.25),
-      0 8px 20px rgba(0, 0, 0, 0.06);
+  /* Đã đổi tên tiêu đề tại đây */
+  .title {
+    font-size: 21px;
+    font-weight: 800;
+    color: #ff2d6f;
     text-align: center;
-    animation: floatIn 0.7s ease-out;
-  }
-
-  @keyframes floatIn {
-    from { opacity: 0; transform: translateY(30px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(90deg, #ff69b4, #ff8fbf);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 999px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    box-shadow: 0 6px 16px rgba(255, 105, 180, 0.35);
-  }
-
-  .badge svg {
-    width: 14px;
-    height: 14px;
-    fill: #fff;
-  }
-
-  h1 {
-    font-size: 26px;
-    color: #1a1a1a;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     letter-spacing: -0.5px;
   }
 
   .subtitle {
-    font-size: 14px;
+    font-size: 13px;
     color: #888;
-    line-height: 1.6;
-    margin-bottom: 28px;
-  }
-
-  .avatar {
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    margin: 0 auto 18px;
-    background: linear-gradient(135deg, #ff69b4, #ffa8cd);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid #fff;
-    box-shadow: 0 0 0 3px #ffd1e3, 0 10px 24px rgba(255, 105, 180, 0.4);
-    font-size: 34px;
-    font-weight: 700;
-    color: #fff;
-  }
-
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 14px;
-    font-size: 15.5px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    border: 2px solid transparent;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 14px;
-    user-select: none;
-  }
-
-  .btn svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
-
-  /* ==== TikTok Button ==== */
-  .btn-tiktok {
-    background: #ffffff;
-    color: #ff2d75;
-    border: 2px solid #ff69b4;
-    box-shadow: 0 6px 18px rgba(255, 105, 180, 0.2);
-  }
-
-  .btn-tiktok:hover {
-    background: linear-gradient(90deg, #ff69b4, #ff8fbf);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(255, 105, 180, 0.45);
-  }
-
-  .btn-tiktok:hover svg {
-    fill: #fff;
-  }
-
-  .btn-tiktok svg {
-    fill: #ff2d75;
-    transition: fill 0.25s ease;
-  }
-
-  .btn-tiktok.done {
-    background: linear-gradient(90deg, #ff69b4, #ff8fbf);
-    color: #fff;
-    border-color: #ff69b4;
-  }
-
-  .btn-tiktok.done svg {
-    fill: #fff;
-  }
-
-  /* ==== Locked Button ==== */
-  .btn-locked {
-    background: #f7f7f9;
-    color: #b0b0b8;
-    border: 2px dashed #d9d9df;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  .btn-locked svg {
-    fill: #b0b0b8;
-  }
-
-  .btn-locked::after {
-    content: '🔒';
-    position: absolute;
-    right: 18px;
-    font-size: 15px;
-  }
-
-  /* ==== Unlocked Button ==== */
-  .btn-unlocked {
-    background: linear-gradient(90deg, #ff2d75, #ff69b4, #ff8fbf);
-    background-size: 200% 100%;
-    color: #fff;
-    border: 2px solid #ff2d75;
-    box-shadow: 0 10px 26px rgba(255, 45, 117, 0.45);
-    pointer-events: auto;
-    cursor: pointer;
-    animation: shine 3s linear infinite;
-  }
-
-  @keyframes shine {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
-
-  .btn-unlocked svg {
-    fill: #fff;
-  }
-
-  .btn-unlocked:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 16px 34px rgba(255, 45, 117, 0.6);
-  }
-
-  .btn-unlocked::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-    animation: sweep 2.5s infinite;
-  }
-
-  @keyframes sweep {
-    0% { left: -100%; }
-    60%, 100% { left: 100%; }
-  }
-
-  .status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 12.5px;
-    color: #999;
-    margin-top: 18px;
-    padding-top: 18px;
-    border-top: 1px dashed #ffd1e3;
-  }
-
-  .status .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ffb3d1;
-    transition: background 0.3s;
-  }
-
-  .status.ok .dot {
-    background: #22c55e;
-    box-shadow: 0 0 8px #22c55e;
-  }
-
-  .status.ok {
-    color: #16a34a;
-    font-weight: 600;
-  }
-
-  .steps {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 22px;
+    text-align: center;
+    margin-bottom: 26px;
   }
 
   .step {
-    flex: 1;
+    background: #fff8fb;
+    border: 1.5px solid #ffd1e3;
+    border-radius: 18px;
+    padding: 18px 16px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .step.completed {
+    background: #f0fff4;
+    border-color: #a8e6b8;
+  }
+
+  .step-badge {
+    position: absolute;
+    top: -10px; left: 16px;
+    background: #ff4d8d;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(255,77,141,0.3);
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px solid transparent;
+    font-family: inherit;
+  }
+
+  .btn-icon { font-size: 18px; }
+
+  .btn-tiktok {
+    background: #ff4d8d;
+    color: white;
+    border-color: #ff4d8d;
+  }
+
+  .btn-tiktok:hover, .btn-tiktok:active {
+    background: #ff2d6f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,77,141,0.35);
+  }
+
+  .btn-claim {
+    background: #f5f5f5;
+    color: #aaa;
+    border-color: #ddd;
+    cursor: not-allowed;
+  }
+
+  .btn-claim:not(:disabled) {
+    background: linear-gradient(135deg, #ff4d8d, #ff2d6f);
+    color: white;
+    border-color: #ff2d6f;
+    cursor: pointer;
+    animation: glowPink 1.5s ease-in-out infinite alternate;
+  }
+
+  .btn-claim:not(:disabled):hover,
+  .btn-claim:not(:disabled):active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,45,111,0.45);
+  }
+
+  @keyframes glowPink {
+    from { box-shadow: 0 0 5px rgba(255,77,141,0.3); }
+    to   { box-shadow: 0 0 18px rgba(255,77,141,0.6); }
+  }
+
+  .hint {
     font-size: 11px;
     color: #aaa;
-    padding: 8px 6px;
-    border-radius: 8px;
-    background: #fafafa;
-    border: 1px solid #f0f0f0;
-    transition: all 0.3s;
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
   }
 
-  .step.active {
-    background: #fff0f6;
-    color: #ff2d75;
-    font-weight: 700;
-    border-color: #ffb3d1;
-  }
-
-  .step.done {
-    background: #ff2d75;
-    color: #fff;
-    border-color: #ff2d75;
-  }
-
-  .toast {
-    position: fixed;
-    top: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-120%);
-    background: #fff;
-    border: 2px solid #ff69b4;
-    color: #ff2d75;
-    padding: 12px 22px;
-    border-radius: 12px;
+  .hint.unlocked {
+    color: #22a35b;
     font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.35);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 999;
-    white-space: nowrap;
+    font-style: normal;
   }
 
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
+  /* Đã xoá phần CSS của .timer-box và .countdown */
+
+  .btn-reset {
+    display: block;
+    margin: 22px auto 0;
+    background: transparent;
+    border: 1.5px solid #ffd1e3;
+    color: #ff4d8d;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-reset:hover, .btn-reset:active {
+    background: #fff0f6;
+    border-color: #ff4d8d;
   }
 </style>
 </head>
 <body>
 
-<div class="toast" id="toast">✅ Đã mở khóa Nguyễn Tú!</div>
+<div class="container">
+  <!-- ĐÃ ĐỔI TÊN TẠI ĐÂY -->
+  <h1 class="title">nguyễn tú 🖤</h1>
+  <p class="subtitle">Hoàn thành 2 bước để nhận phần thưởng</p>
 
-<div class="card">
-  <div class="badge">
-    <svg viewBox="0 0 24 24"><path d="M12 1l3 6 6.5.9-4.7 4.6 1.1 6.5L12 16l-5.9 3 1.1-6.5L2.5 7.9 9 7z"/></svg>
-    Xác Thực Chính Chủ
+  <!-- Bước 1 -->
+  <div class="step" id="step1">
+    <div class="step-badge">1</div>
+    <button id="tiktokBtn" class="btn btn-tiktok">
+      <span class="btn-icon">🎵</span>
+      Follow TikTok & Tim Video
+    </button>
+    <p class="hint">Nhấn để mở TikTok và thực hiện follow + tim video</p>
   </div>
 
-  <div class="avatar">NT</div>
-
-  <h1>Nguyễn Tú</h1>
-  <p class="subtitle">
-    Vui lòng <b>Follow TikTok @tangquaking</b> để mở khóa liên kết bên dưới.
-    Hệ thống sẽ tự động ghi nhớ trạng thái của bạn.
-  </p>
-
-  <div class="steps">
-    <div class="step active" id="step1">1. Follow TikTok</div>
-    <div class="step" id="step2">2. Mở khóa Nguyễn Tú</div>
+  <!-- Bước 2 -->
+  <div class="step" id="step2">
+    <div class="step-badge">2</div>
+    <button id="claimBtn" class="btn btn-claim" disabled>
+      🔒 Nhận Nguyên Tử
+    </button>
+    <p class="hint" id="claimHint">Hoàn thành bước 1 để mở khóa</p>
   </div>
 
-  <a href="https://www.tiktok.com/@tangquaking" target="_blank" rel="noopener" 
-     class="btn btn-tiktok" id="btnTiktok">
-    <svg viewBox="0 0 24 24"><path d="M16.5 3c.3 1.7 1.4 3.2 3 3.9v2.6c-1.2 0-2.4-.4-3.4-1.1v6.2c0 3.2-2.6 5.8-5.8 5.8S4.5 17.8 4.5 14.6 7.1 8.8 10.3 8.8c.3 0 .6 0 .9.1v2.7c-.3-.1-.6-.2-.9-.2-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1V3h3.1z"/></svg>
-    <span id="tiktokText">Follow TikTok</span>
-  </a>
+  <!-- ĐÃ XOÁ BỘ ĐẾM NGƯỢC Ở ĐÂY -->
 
-  <a href="https://phienchoso.com/f1388e7de8a51d7e9881.tk" target="_blank" rel="noopener"
-     class="btn btn-locked" id="btnMain">
-    <svg viewBox="0 0 24 24"><path d="M12 2C9.8 2 8 3.8 8 6v2H6c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-2V6c0-2.2-1.8-4-4-4zm0 2c1.1 0 2 .9 2 2v2h-4V6c0-1.1.9-2 2-2zm0 10c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>
-    <span id="mainText">Nguyễn Tú (Đã Khóa)</span>
-  </a>
-
-  <div class="status" id="status">
-    <span class="dot"></span>
-    <span id="statusText">Chưa xác thực — hãy follow TikTok để mở khóa Nguyễn Tú</span>
-  </div>
+  <!-- Reset -->
+  <button id="resetBtn" class="btn-reset">🔄 Làm mới trạng thái</button>
 </div>
 
 <script>
-  const KEY = 'tq_verified_v1';
-  const btnTiktok   = document.getElementById('btnTiktok');
-  const btnMain     = document.getElementById('btnMain');
-  const tiktokText  = document.getElementById('tiktokText');
-  const mainText    = document.getElementById('mainText');
-  const statusEl    = document.getElementById('status');
-  const statusText  = document.getElementById('statusText');
-  const step1       = document.getElementById('step1');
-  const step2       = document.getElementById('step2');
-  const toast       = document.getElementById('toast');
+  // ========== CẤU HÌNH ==========
+  var TIKTOK_URL = 'https://www.tiktok.com/@tangquaking';
+  var CLAIM_URL  = 'https://phienchoso.com/f1388e7de8a51d7e9881.tk';
+  var COUNTDOWN_SECONDS = 60;
 
-  function showToast(msg) {
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2200);
+  // ========== DOM ==========
+  var tiktokBtn  = document.getElementById('tiktokBtn');
+  var claimBtn   = document.getElementById('claimBtn');
+  var claimHint  = document.getElementById('claimHint');
+  var resetBtn   = document.getElementById('resetBtn');
+  var step1      = document.getElementById('step1');
+  var step2      = document.getElementById('step2');
+
+  var countdownInterval = null;
+
+  // ========== LƯU / ĐỌC TRẠNG THÁI ==========
+  function saveState(unlocked) {
+    try { localStorage.setItem('tiktokUnlocked', unlocked ? 'true' : 'false'); } catch(e) {}
   }
 
-  function unlock(silent) {
-    btnTiktok.classList.add('done');
-    tiktokText.textContent = 'Đã Follow ✓';
-
-    btnMain.classList.remove('btn-locked');
-    btnMain.classList.add('btn-unlocked');
-    mainText.textContent = 'Nguyễn Tú — Mở Khóa Ngay';
-
-    statusEl.classList.add('ok');
-    statusText.textContent = 'Đã xác thực — Nguyễn Tú đã mở khóa';
-
-    step1.classList.remove('active');
-    step1.classList.add('done');
-    step1.textContent = '1. Đã Follow ✓';
-    step2.classList.add('active');
-    step2.classList.remove('done');
-    step2.textContent = '2. Mở khóa Nguyễn Tú ✨';
-
-    if (!silent) showToast('✅ Đã mở khóa Nguyễn Tú!');
+  function readState() {
+    try { return localStorage.getItem('tiktokUnlocked') === 'true'; } catch(e) { return false; }
   }
 
-  function lock() {
-    btnTiktok.classList.remove('done');
-    tiktokText.textContent = 'Follow TikTok';
-
-    btnMain.classList.add('btn-locked');
-    btnMain.classList.remove('btn-unlocked');
-    mainText.textContent = 'Nguyễn Tú (Đã Khóa)';
-
-    statusEl.classList.remove('ok');
-    statusText.textContent = 'Chưa xác thực — hãy follow TikTok để mở khóa Nguyễn Tú';
-
-    step1.classList.add('active');
-    step1.classList.remove('done');
-    step1.textContent = '1. Follow TikTok';
-    step2.classList.remove('active', 'done');
-    step2.textContent = '2. Mở khóa Nguyễn Tú';
+  // ========== KHÓA ==========
+  function lockClaimButton() {
+    claimBtn.disabled = true;
+    claimBtn.innerHTML = '🔒 Nhận Nguyên Tử';
+    claimHint.textContent = 'Hoàn thành bước 1 để mở khóa';
+    claimHint.classList.remove('unlocked');
+    step1.classList.remove('completed');
+    step2.classList.remove('completed');
+    saveState(false);
+    if (countdownInterval) {
+      clearInterval(countdownInterval);
+      countdownInterval = null;
+    }
   }
 
-  btnTiktok.addEventListener('click', () => {
-    localStorage.setItem(KEY, 'true');
-    setTimeout(() => unlock(false), 200);
+  // ========== MỞ KHÓA ==========
+  function unlockClaimButton() {
+    claimBtn.disabled = false;
+    claimBtn.innerHTML = '✅ Nhận Nguyên Tử';
+    claimHint.textContent = 'Đã mở khóa! Nhấn để nhận thưởng.';
+    claimHint.classList.add('unlocked');
+    step1.classList.add('completed');
+    step2.classList.add('completed');
+    saveState(true);
+    startCountdown(COUNTDOWN_SECONDS);
+  }
+
+  // ========== ĐẾM NGƯỢC NGẦM (KHÔNG HIỂN THỊ) ==========
+  function startCountdown(seconds) {
+    if (countdownInterval) clearInterval(countdownInterval);
+    var remaining = seconds;
+
+    // Không cập nhật DOM nữa vì đã ẩn giao diện
+    countdownInterval = setInterval(function() {
+      remaining--;
+      if (remaining <= 0) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+        lockClaimButton();
+        alert('⏰ Hết thời gian 1 phút! Vui lòng thực hiện lại bước 1 để mở khóa.');
+      }
+    }, 1000);
+  }
+
+  // ========== SỰ KIỆN ==========
+  tiktokBtn.addEventListener('click', function() {
+    window.open(TIKTOK_URL, '_blank');
+    unlockClaimButton();
   });
 
-  window.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem(KEY) === 'true') {
-      unlock(true);
-    } else {
-      lock();
+  claimBtn.addEventListener('click', function() {
+    if (!claimBtn.disabled) {
+      window.open(CLAIM_URL, '_blank');
     }
   });
-</script>
 
+  resetBtn.addEventListener('click', function() {
+    lockClaimButton();
+    alert('🔄 Đã làm mới trạng thái. Vui lòng follow TikTok lại.');
+  });
+
+  // ========== KHỞI CHẠY ==========
+  if (readState()) {
+    unlockClaimButton();
+  } else {
+    lockClaimButton();
+  }
+</script>
 </body>
 </html>
