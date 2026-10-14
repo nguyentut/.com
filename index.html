@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TangQuaking - Xác Thực</title>
+<title>Nguyễn Tú - Xác Thực</title>
 <style>
   * {
     margin: 0;
@@ -332,7 +332,7 @@
 </head>
 <body>
 
-<div class="toast" id="toast">✅ Đã xác thực thành công!</div>
+<div class="toast" id="toast">✅ Đã mở khóa Nguyễn Tú!</div>
 
 <div class="card">
   <div class="badge">
@@ -340,17 +340,17 @@
     Xác Thực Chính Chủ
   </div>
 
-  <div class="avatar">TQ</div>
+  <div class="avatar">NT</div>
 
-  <h1>TangQuaking</h1>
+  <h1>Nguyễn Tú</h1>
   <p class="subtitle">
-    Vui lòng <b>Follow TikTok</b> để mở khóa liên kết bên dưới.
+    Vui lòng <b>Follow TikTok @tangquaking</b> để mở khóa liên kết bên dưới.
     Hệ thống sẽ tự động ghi nhớ trạng thái của bạn.
   </p>
 
   <div class="steps">
     <div class="step active" id="step1">1. Follow TikTok</div>
-    <div class="step" id="step2">2. Nhận link</div>
+    <div class="step" id="step2">2. Mở khóa Nguyễn Tú</div>
   </div>
 
   <a href="https://www.tiktok.com/@tangquaking" target="_blank" rel="noopener" 
@@ -362,12 +362,12 @@
   <a href="https://phienchoso.com/f1388e7de8a51d7e9881.tk" target="_blank" rel="noopener"
      class="btn btn-locked" id="btnMain">
     <svg viewBox="0 0 24 24"><path d="M12 2C9.8 2 8 3.8 8 6v2H6c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-2V6c0-2.2-1.8-4-4-4zm0 2c1.1 0 2 .9 2 2v2h-4V6c0-1.1.9-2 2-2zm0 10c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>
-    <span id="mainText">Ghi Nguyên Tử (Đã Khóa)</span>
+    <span id="mainText">Nguyễn Tú (Đã Khóa)</span>
   </a>
 
   <div class="status" id="status">
     <span class="dot"></span>
-    <span id="statusText">Chưa xác thực — hãy follow TikTok</span>
+    <span id="statusText">Chưa xác thực — hãy follow TikTok để mở khóa Nguyễn Tú</span>
   </div>
 </div>
 
@@ -390,28 +390,24 @@
   }
 
   function unlock(silent) {
-    // Đổi nút TikTok thành trạng thái đã follow
     btnTiktok.classList.add('done');
     tiktokText.textContent = 'Đã Follow ✓';
 
-    // Mở khóa nút chính
     btnMain.classList.remove('btn-locked');
     btnMain.classList.add('btn-unlocked');
-    mainText.textContent = 'Ghi Nguyên Tử — Mở Khóa Ngay';
+    mainText.textContent = 'Nguyễn Tú — Mở Khóa Ngay';
 
-    // Cập nhật trạng thái
     statusEl.classList.add('ok');
-    statusText.textContent = 'Đã xác thực thành công — Link đã mở khóa';
+    statusText.textContent = 'Đã xác thực — Nguyễn Tú đã mở khóa';
 
-    // Cập nhật bước
     step1.classList.remove('active');
     step1.classList.add('done');
     step1.textContent = '1. Đã Follow ✓';
     step2.classList.add('active');
     step2.classList.remove('done');
-    step2.textContent = '2. Nhận link ✨';
+    step2.textContent = '2. Mở khóa Nguyễn Tú ✨';
 
-    if (!silent) showToast('✅ Mở khóa thành công!');
+    if (!silent) showToast('✅ Đã mở khóa Nguyễn Tú!');
   }
 
   function lock() {
@@ -420,26 +416,23 @@
 
     btnMain.classList.add('btn-locked');
     btnMain.classList.remove('btn-unlocked');
-    mainText.textContent = 'Ghi Nguyên Tử (Đã Khóa)';
+    mainText.textContent = 'Nguyễn Tú (Đã Khóa)';
 
     statusEl.classList.remove('ok');
-    statusText.textContent = 'Chưa xác thực — hãy follow TikTok';
+    statusText.textContent = 'Chưa xác thực — hãy follow TikTok để mở khóa Nguyễn Tú';
 
     step1.classList.add('active');
     step1.classList.remove('done');
     step1.textContent = '1. Follow TikTok';
     step2.classList.remove('active', 'done');
-    step2.textContent = '2. Nhận link';
+    step2.textContent = '2. Mở khóa Nguyễn Tú';
   }
 
-  // Khi bấm follow TikTok -> lưu trạng thái và mở khóa
   btnTiktok.addEventListener('click', () => {
     localStorage.setItem(KEY, 'true');
-    // Delay nhẹ để người dùng thấy hiệu ứng trước khi tab mới mở
     setTimeout(() => unlock(false), 200);
   });
 
-  // Khôi phục trạng thái khi tải lại trang
   window.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem(KEY) === 'true') {
       unlock(true);
@@ -450,4 +443,4 @@
 </script>
 
 </body>
-  </html>
+</html>
